@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HI Dining Club | Your Key to Honolulu's Finest Dining</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0A1628;
+            --navy-light: #1E3A5F;
+            --gold: #C9A46B;
+            --gold-light: #D4B87D;
+            --cream: #F8F7F4;
+            --white: #FFFFFF;
+            --silver: #E8E8E8;
+            --charcoal: #2D2D2D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        .heading-xl {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            line-height: 0.95;
+            font-size: clamp(36px, 5vw, 72px);
+        }
+
+        .heading-lg {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            line-height: 1.05;
+            font-size: clamp(28px, 3.5vw, 48px);
+        }
+
+        .heading-md {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: clamp(20px, 2.5vw, 32px);
+        }
+
+        .label-mono {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .body-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            font-size: clamp(14px, 1.1vw, 16px);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--silver);
+            padding: 16px 48px;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-crown {
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--navy);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--navy);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--navy);
+        }
+
+        /* Mobile menu overlay */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 22, 40, 0.97);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 48px 80px;
+            background: var(--navy);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 0.8fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .hero-headline {
+            color: var(--white);
+        }
+
+        .hero-subtext {
+            color: rgba(255,255,255,0.7);
+            max-width: 320px;
+        }
+
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .qr-code svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-center {
+            position: relative;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 500px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            background: var(--navy-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-video-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .hero-video-placeholder svg {
+            width: 64px;
+            height: 64px;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+
+        .hero-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .pass-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .pass-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .pass-header svg {
+            width: 28px;
+            height: 28px;
+            color: var(--gold);
+        }
+
+        .pass-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--navy);
+        }
+
+        .pass-discount {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 42px;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .pass-subtitle {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            color: var(--navy-light);
+            margin-bottom: 16px;
+        }
+
+        .pass-eligibility {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--navy-light);
+            margin-bottom: 24px;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--navy);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 16px 32px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* Hotel Sections */
+        .hotel-section {
+            padding: 80px 48px;
+            background: var(--white);
+        }
+
+        .hotel-section:nth-child(even) {
+            background: var(--cream);
+        }
+
+        .hotel-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hotel-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--navy);
+        }
+
+        .hotel-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--navy);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .hotel-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+        }
+
+        .hotel-name {
+            color: var(--navy);
+        }
+
+        .venues-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+        }
+
+        .venue-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--silver);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .venue-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .venue-image {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .venue-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .venue-card:hover .venue-image img {
+            transform: scale(1.05);
+        }
+
+        .venue-content {
+            padding: 28px;
+        }
+
+        .venue-name {
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .venue-description {
+            color: var(--charcoal);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .venue-happy-hour {
+            background: rgba(201, 164, 107, 0.1);
+            border-left: 3px solid var(--gold);
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .happy-hour-label {
+            color: var(--gold);
+            font-size: 10px;
+            margin-bottom: 4px;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .happy-hour-time {
+            color: var(--navy);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .venue-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-tag {
+            background: rgba(201, 164, 107, 0.15);
+            color: var(--gold);
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .venue-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .venue-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--navy);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .venue-link:hover {
+            color: var(--gold);
+        }
+
+        .venue-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            padding: 48px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .footer-logo svg {
+            width: 32px;
+            height: 32px;
+            color: var(--gold);
+        }
+
+        .footer-logo span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--white);
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+
+        .footer-text span {
+            color: var(--gold);
+            margin: 0 8px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-left {
+                align-items: center;
+            }
+
+            .hero-subtext {
+                max-width: 100%;
+            }
+
+            .qr-section {
+                align-items: center;
+            }
+
+            .hero-video {
+                height: 350px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .venues-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 16px 24px;
+            }
+
+            .hero {
+                padding: 100px 24px 60px;
+            }
+
+            .hotel-section {
+                padding: 60px 24px;
+            }
+
+            .hero-video {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg class="logo-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 18L6 8L12 12L18 8L20 18H4Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="6" cy="6" r="1.5" fill="currentColor"/>
+                    <circle cx="12" cy="9" r="1.5" fill="currentColor"/>
+                    <circle cx="18" cy="6" r="1.5" fill="currentColor"/>
+                </svg>
+                <span class="logo-text">HI Dining Club</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#kaimana">Kaimana Beach Hotel</a></li>
+                <li><a href="#alohilani">ʻAlohilani Resort</a></li>
+                <li><a href="#romer">Romer House Waikīkī</a></li>
+                <li><a href="#ambassador">Ambassador Hotel</a></li>
+                <li><a href="#achotel">AC Hotel Honolulu</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12H21M3 6H21M3 18H21" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="menuClose" aria-label="Close menu">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>
+            </svg>
+        </button>
+        <a href="#kaimana" onclick="closeMobileMenu()">Kaimana Beach Hotel</a>
+        <a href="#alohilani" onclick="closeMobileMenu()">ʻAlohilani Resort</a>
+        <a href="#romer" onclick="closeMobileMenu()">Romer House Waikīkī</a>
+        <a href="#ambassador" onclick="closeMobileMenu()">Ambassador Hotel</a>
+        <a href="#achotel" onclick="closeMobileMenu()">AC Hotel Honolulu</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="hero-headline">
+                    <p class="label-mono" style="color: var(--gold); margin-bottom: 12px;">Save Your</p>
+                    <h1 class="heading-xl">Seat At The<br>Table</h1>
+                </div>
+                <p class="hero-subtext body-text">
+                    A curated dining pass for hotel guests, kama'āina &amp; insiders. Enjoy 15% off food and beverage at Hawaiʻi's finest hotel restaurants.
+                </p>
+                <div class="qr-section">
+                    <div class="qr-code">
+                        <svg viewBox="0 0 100 100">
+                            <rect fill="#0A1628" x="10" y="10" width="25" height="25"/>
+                            <rect fill="#0A1628" x="65" y="10" width="25" height="25"/>
+                            <rect fill="#0A1628" x="10" y="65" width="25" height="25"/>
+                            <rect fill="white" x="15" y="15" width="15" height="15"/>
+                            <rect fill="white" x="70" y="15" width="15" height="15"/>
+                            <rect fill="white" x="15" y="70" width="15" height="15"/>
+                            <rect fill="#0A1628" x="18" y="18" width="9" height="9"/>
+                            <rect fill="#0A1628" x="73" y="18" width="9" height="9"/>
+                            <rect fill="#0A1628" x="18" y="73" width="9" height="9"/>
+                            <rect fill="#0A1628" x="40" y="10" width="5" height="5"/>
+                            <rect fill="#0A1628" x="50" y="10" width="5" height="5"/>
+                            <rect fill="#0A1628" x="40" y="20" width="5" height="5"/>
+                            <rect fill="#0A1628" x="45" y="25" width="5" height="5"/>
+                            <rect fill="#0A1628" x="55" y="20" width="5" height="5"/>
+                            <rect fill="#0A1628" x="10" y="40" width="5" height="5"/>
+                            <rect fill="#0A1628" x="20" y="45" width="5" height="5"/>
+                            <rect fill="#0A1628" x="40" y="40" width="5" height="5"/>
+                            <rect fill="#0A1628" x="50" y="45" width="5" height="5"/>
+                            <rect fill="#0A1628" x="65" y="40" width="5" height="5"/>
+                            <rect fill="#0A1628" x="70" y="45" width="5" height="5"/>
+                            <rect fill="#0A1628" x="40" y="55" width="5" height="5"/>
+                            <rect fill="#0A1628" x="50" y="60" width="5" height="5"/>
+                            <rect fill="#0A1628" x="65" y="55" width="5" height="5"/>
+                            <rect fill="#0A1628" x="75" y="55" width="5" height="5"/>
+                        </svg>
+                    </div>
+                    <p class="label-mono" style="color: rgba(255,255,255,0.5);">Scan to Join</p>
+                </div>
+            </div>
+
+            <div class="hero-center">
+                <div class="hero-video">
+                    <video autoplay muted loop playsinline>
+                        <source src="hero.mp4" type="video/mp4">
+                    </video>
+                    <!-- Fallback placeholder if video doesn't load -->
+                    <div class="hero-video-placeholder" id="videoPlaceholder" style="display:none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p class="label-mono" style="color: rgba(255,255,255,0.4);">HI Dining Club</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="pass-card">
+                    <div class="pass-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 18L6 8L12 12L18 8L20 18H4Z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="6" cy="6" r="1.5" fill="currentColor"/>
+                            <circle cx="12" cy="9" r="1.5" fill="currentColor"/>
+                            <circle cx="18" cy="6" r="1.5" fill="currentColor"/>
+                        </svg>
+                        <span class="pass-title">HI Dining Club</span>
+                    </div>
+                    <p class="pass-discount">15% off</p>
+                    <p class="pass-subtitle">Food &amp; Beverage</p>
+                    <div class="pass-eligibility">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color: var(--gold);">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span>Hotel guests • Kama'āina • Insiders</span>
+                    </div>
+                    <button class="btn-gold" onclick="document.getElementById('kaimana').scrollIntoView({behavior:'smooth'})">View All Restaurants</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kaimana Beach Hotel -->
+    <section id="kaimana" class="hotel-section">
+        <div class="hotel-container">
+            <div class="hotel-header">
+                <div class="hotel-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="9 22 9 12 15 12 15 22" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="hotel-name heading-lg">Kaimana Beach Hotel</h2>
+            </div>
+
+            <div class="venues-grid">
+                <!-- Hau Tree -->
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="hau-tree.jpg" alt="Hau Tree" loading="lazy">
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name heading-md">Hau Tree</h3>
+                        <p class="venue-description body-text">
+                            Honolulu's iconic beachside spot for brunch and casual dinner. The open-air dining room sits under a canopy of ancient hau trees with unobstructed oceanfront views of Kaimana Beach — one of the most beloved tables in all of Oʻahu.
+                        </p>
+                        <div class="venue-happy-hour">
+                            <p class="happy-hour-label">Pau Hana</p>
+                            <p class="happy-hour-time">2:00 PM – 5:00 PM Daily</p>
+                        </div>
+                        <div class="venue-highlights">
+                            <span class="highlight-tag">Hale ʻĀina Awarded</span>
+                            <span class="highlight-tag">Wine Spectator</span>
+                            <span class="highlight-tag">Brunch &amp; Dinner</span>
+                        </div>
+                        <div class="venue-links">
+                            <a href="https://www.kaimana.com/dine/hau-tree/" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Website
+                            </a>
+                            <a href="https://instagram.com/thehautree" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round"/>
+                                </svg>
+                                @thehautree
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sunset Provisions -->
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="sunset-provisions.jpeg" alt="Sunset Provisions" loading="lazy">
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name heading-md">Sunset Provisions</h3>
+                        <p class="venue-description body-text">
+                            Just off the lobby, Sunset Provisions celebrates the Hawaiian lifestyle in a bright, sun-soaked setting. Pour over a cup from Kaimana Coffee Co. — Waikīkī's best — while browsing locally sourced island goods, beach gear, and artisan finds.
+                        </p>
+                        <div class="venue-highlights">
+                            <span class="highlight-tag">Kaimana Coffee Co.</span>
+                            <span class="highlight-tag">Grab-and-Go</span>
+                            <span class="highlight-tag">Local Goods</span>
+                        </div>
+                        <div class="venue-links">
+                            <a href="https://www.kaimana.com/dine/sunset-provisions/" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Website
+                            </a>
+                            <a href="https://instagram.com/sunsetprovisions" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round"/>
+                                </svg>
+                                @sunsetprovisions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ʻAlohilani Resort -->
+    <section id="alohilani" class="hotel-section">
+        <div class="hotel-container">
+            <div class="hotel-header">
+                <div class="hotel-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="9 22 9 12 15 12 15 22" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="hotel-name heading-lg">ʻAlohilani Resort</h2>
+            </div>
+
+            <div class="venues-grid">
+                <!-- Swell -->
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="swell.jpeg" alt="Swell" loading="lazy">
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name heading-md">Swell</h3>
+                        <p class="venue-description body-text">
+                            Perched beside ʻAlohilani's iconic infinity pool, Swell is an unrivaled destination with sweeping ocean views of Waikīkī Beach. Sip craft cocktails in a private cabana, enjoy locally sourced small plates, and catch live music from local musicians and DJs.
+                        </p>
+                        <div class="venue-happy-hour">
+                            <p class="happy-hour-label">Earth to Cup Happy Hour</p>
+                            <p class="happy-hour-time">Mon–Thu 4:00 PM – 6:00 PM</p>
+                        </div>
+                        <div class="venue-highlights">
+                            <span class="highlight-tag">Craft Cocktails</span>
+                            <span class="highlight-tag">Poolside Cabanas</span>
+                            <span class="highlight-tag">Live Music</span>
+                        </div>
+                        <div class="venue-links">
+                            <a href="https://www.alohilaniresort.com/dining/swell-bar/" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Website
+                            </a>
+                            <a href="https://instagram.com/swellwaikiki" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round"/>
+                                </svg>
+                                @swellwaikiki
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ʻAlohilani Pool -->
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="alohilani-pool.jpeg" alt="ʻAlohilani Pool" loading="lazy">
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name heading-md">ʻAlohilani Pool</h3>
+                        <p class="venue-description body-text">
+                            One of Waikīkī's most breathtaking pools — an infinity-edge oasis with panoramic ocean views stretching to the horizon. Lounge on a plush daybed, order poolside from Swell, and watch Waikīkī unfold beneath a blue Pacific sky.
+                        </p>
+                        <div class="venue-highlights">
+                            <span class="highlight-tag">Heated Infinity Pool</span>
+                            <span class="highlight-tag">Daybeds &amp; Cabanas</span>
+                            <span class="highlight-tag">Guests Only</span>
+                        </div>
+                        <div class="venue-links">
+                            <a href="https://www.alohilaniresort.com" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Website
+                            </a>
+                            <a href="https://instagram.com/alohilaniresort" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round"/>
+                                </svg>
+                                @alohilaniresort
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Romer House Waikīkī -->
+    <section id="romer" class="hotel-section">
+        <div class="hotel-container">
+            <div class="hotel-header">
+                <div class="hotel-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="9 22 9 12 15 12 15 22" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="hotel-name heading-lg">Romer House Waikīkī</h2>
+            </div>
+
+            <div class="venues-grid">
+                <!-- 855-ALOHA -->
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="855-aloha.jpg" alt="855-ALOHA" loading="lazy">
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name heading-md">855-ALOHA</h3>
+                        <p class="venue-description body-text">
+                            A buzzy neighborhood eatery calling back to old-school Hawaiʻi. 855-ALOHA blends Japanese, Chinese, Korean, and European influences with the island's rich culinary history — announced by a vintage phone booth at the entrance.
+                        </p>
+                        <div class="venue-happy-hour">
+                            <p class="happy-hour-label">3-Course Set Menu</p>
+                            <p class="happy-hour-time">5:00 PM – 7:00 PM · $39</p>
+                        </div>
+                        <div class="venue-highlights">
+                            <span class="highlight-tag">Tue–Sat Dinner</span>
+                            <span class="highlight-tag">Late Night</span>
+                            <span class="highlight-tag">Izakaya-Style</span>
+                        </div>
+                        <div class="venue-links">
+                            <a href="https://www.855aloha.com/" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Website
+                            </a>
+                            <a href="https://instagram.com/855aloha" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round"/>
+                                </svg>
+                                @855aloha
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Backyard -->
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="the-backyard.jpg" alt="The Backyard" loading="lazy">
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name heading-md">The Backyard</h3>
+                        <p class="venue-description body-text">
+                            Tucked behind a gallery of carved masks, The Backyard is a secret tropical retreat. Native palms, a heated wading pool, daybed cabanas, and a sweeping fishpond mural by local artist Cory Kamehanaokalā set the scene.
+                        </p>
+                        <div class="venue-happy-hour">
+                            <p class="happy-hour-label">Pau Hana</p>
+                            <p class="happy-hour-time">4:00 PM – 6:00 PM Daily</p>
+                        </div>
+                        <div class="venue-highlights">
+                            <span class="highlight-tag">Tropical Bar</span>
+                            <span class="highlight-tag">Heated Pool</span>
+                            <span class="highlight-tag">Hula Thu 5:30PM</span>
+                        </div>
+                        <div class="venue-links">
+                            <a href="https://www.romerhotels.com/romer-house-waikiki" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Website
+                            </a>
+                            <a href="https://instagram.com/romerhousewaikiki" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round"/>
+                                </svg>
+                                @romerhousewaikiki
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ambassador Hotel of Waikīkī -->
+    <section id="ambassador" class="hotel-section">
+        <div class="hotel-container">
+            <div class="hotel-header">
+                <div class="hotel-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="9 22 9 12 15 12 15 22" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="hotel-name heading-lg">Ambassador Hotel of Waikīkī</h2>
+            </div>
+
+            <div class="venues-grid">
+                <!-- Favorite Son -->
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="favorite-son.jpg" alt="Favorite Son" loading="lazy">
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name heading-md">Favorite Son</h3>
+                        <p class="venue-description body-text">
+                            A heartfelt homage to the island's homegrown originals. Set in a relaxed indoor-outdoor courtyard, Favorite Son's deli-meets-diner menu features acai bowls, hoagies, pizzas, and protein bowls — served all day with retro-modern cocktails.
+                        </p>
+                        <div class="venue-happy-hour">
+                            <p class="happy-hour-label">Happy Hour</p>
+                            <p class="happy-hour-time">4:00 PM – 6:00 PM Daily</p>
+                        </div>
+                        <div class="venue-highlights">
+                            <span class="highlight-tag">All-Day Dining</span>
+                            <span class="highlight-tag">Live Entertainment</span>
+                            <span class="highlight-tag">Courtyard Setting</span>
+                        </div>
+                        <div class="venue-links">
+                            <a href="https://www.ambassadorwaikiki.com/restaurants-waikiki-hawaii/favorite-son-waikiki" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Website
+                            </a>
+                            <a href="https://instagram.com/ambassadorwaikiki" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round"/>
+                                </svg>
+                                @ambassadorwaikiki
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AC Hotel Honolulu -->
+    <section id="achotel" class="hotel-section">
+        <div class="hotel-container">
+            <div class="hotel-header">
+                <div class="hotel-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="9 22 9 12 15 12 15 22" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 class="hotel-name heading-lg">AC Hotel Honolulu</h2>
+            </div>
+
+            <div class="venues-grid">
+                <!-- The Dotted Line -->
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="the-dotted-line.jpg" alt="The Dotted Line" loading="lazy">
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name heading-md">The Dotted Line</h3>
+                        <p class="venue-description body-text">
+                            The AC Hotel's main restaurant serves modern global cuisine from breakfast through late night. Chef Jared Astrinos brings bold, well-traveled flavors to every plate, while live music Monday, Wednesday, and Friday keeps the energy effortlessly cool.
+                        </p>
+                        <div class="venue-happy-hour">
+                            <p class="happy-hour-label">Pau Hana · 7-for-$7 Bites</p>
+                            <p class="happy-hour-time">3:00 PM – 6:00 PM Daily</p>
+                        </div>
+                        <div class="venue-highlights">
+                            <span class="highlight-tag">Live Music MWF</span>
+                            <span class="highlight-tag">$2 Off Drinks</span>
+                            <span class="highlight-tag">Global Cuisine</span>
+                        </div>
+                        <div class="venue-links">
+                            <a href="https://www.marriott.com/en-us/hotels/hnlac-ac-hotel-honolulu/dining/" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Website
+                            </a>
+                            <a href="https://instagram.com/thedottedlinehnl" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round"/>
+                                </svg>
+                                @thedottedlinehnl
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common Ground -->
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="common-ground.jpg" alt="Common Ground" loading="lazy">
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name heading-md">Common Ground</h3>
+                        <p class="venue-description body-text">
+                            Downtown's chic neighborhood bodega, serving Big Island Coffee Roasters coffee alongside hotel essentials and locally-curated gifts. Dog-friendly and community-minded — bring your pup for a free puppuccino with your morning order.
+                        </p>
+                        <div class="venue-highlights">
+                            <span class="highlight-tag">Big Island Coffee</span>
+                            <span class="highlight-tag">Puppuccinos</span>
+                            <span class="highlight-tag">Dog-Friendly</span>
+                        </div>
+                        <div class="venue-links">
+                            <a href="https://www.marriott.com/en-us/hotels/hnlac-ac-hotel-honolulu/dining/" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Website
+                            </a>
+                            <a href="https://instagram.com/achotelhnl" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round"/>
+                                </svg>
+                                @achotelhnl
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yours Truly -->
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <img src="yours-truly.jpg" alt="Yours Truly" loading="lazy">
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name heading-md">Yours Truly</h3>
+                        <p class="venue-description body-text">
+                            Honolulu's most elusive bar — a prohibition-era speakeasy hidden below The Dotted Line. Gain entry by reservation and password only. Guests order through handwritten postcards, bites arrive via a whimsical mailbox system.
+                        </p>
+                        <div class="venue-highlights">
+                            <span class="highlight-tag">Reservation + Password</span>
+                            <span class="highlight-tag">Craft Cocktails</span>
+                            <span class="highlight-tag">Speakeasy</span>
+                        </div>
+                        <div class="venue-links">
+                            <a href="https://www.yourstrulyhawaii.com" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                </svg>
+                                Website
+                            </a>
+                            <a href="https://instagram.com/yourstrulyhnl" target="_blank" class="venue-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-linecap="round"/>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-linecap="round"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round"/>
+                                </svg>
+                                @yourstrulyhnl
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 18L6 8L12 12L18 8L20 18H4Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="6" cy="6" r="1.5" fill="currentColor"/>
+                    <circle cx="12" cy="9" r="1.5" fill="currentColor"/>
+                    <circle cx="18" cy="6" r="1.5" fill="currentColor"/>
+                </svg>
+                <span>HI Dining Club</span>
+            </div>
+            <p class="footer-text">
+                © 2025 HI Dining Club. All rights reserved. <span>·</span> Powered by Highgate Hotels
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuClose = document.getElementById('menuClose');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+        }
+
+        // Handle video fallback
+        const video = document.querySelector('.hero-video video');
+        const placeholder = document.getElementById('videoPlaceholder');
+        if (video) {
+            video.addEventListener('error', () => {
+                video.style.display = 'none';
+                if (placeholder) placeholder.style.display = 'flex';
+            });
+        }
+    </script>
+</body>
+</html>
